@@ -1,100 +1,109 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-import './App.css';
-import HomeScreen from './screens/HomeScreen';
-import ProductScreen from './screens/ProductScreen';
-import Cookie from 'js-cookie';
+import { BrowserRouter, Route, Link } from "react-router-dom";
+import "./App.css";
+import HomeScreen from "./screens/HomeScreen";
+import ProductScreen from "./screens/ProductScreen";
+import Cookie from "js-cookie";
 
-
-import { useSelector, useDispatch,  } from 'react-redux';
-import CartScreen from './screens/CartScreen';
-import SigninScreen from './screens/SigninScreen';
-import RegisterScreen from './screens/RegisterScreen';
-import ProductsScreen from './screens/ProductsScreen';
-import PaymentScreen from './screens/PaymentScreen';
-import PlaceOrderScreen from './screens/PlaceOrderScreen';
-import ProfileScreen from './screens/ProfileScreen';
-import OrdersScreen from './screens/OdersScreen';
-import ChefScreen from './screens/ChefScreen';
-import ITstaffScreen from './screens/ITstaffScreen';
-import VendorScreen from './screens/VendorScreen';
-import ManagerScreen from './screens/ManagerScreen';
+import { useSelector, useDispatch } from "react-redux";
+import CartScreen from "./screens/CartScreen";
+import SigninScreen from "./screens/SigninScreen";
+import RegisterScreen from "./screens/RegisterScreen";
+import ProductsScreen from "./screens/ProductsScreen";
+import PaymentScreen from "./screens/PaymentScreen";
+import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+import OrdersScreen from "./screens/OdersScreen";
+import ChefScreen from "./screens/ChefScreen";
+import ITstaffScreen from "./screens/ITstaffScreen";
+import VendorScreen from "./screens/VendorScreen";
+import ManagerScreen from "./screens/ManagerScreen";
 
 function App() {
-
-  const userSignin = useSelector(state => state.userSignin);
+  const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
-  const cart = useSelector(state => state.cart);
+  const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  const vendorList = useSelector(state => state.vendorList);
+  const vendorList = useSelector((state) => state.vendorList);
   const { vendors, loading, error } = vendorList;
 
-  const selectVendorHandler = (vendor_name) =>{
+  const selectVendorHandler = (vendor_name) => {
     Cookie.set("vendor_name", vendor_name);
-  }
+  };
   const openMenu = async () => {
     document.querySelector(".sidebar").classList.add("open");
-  }
+  };
   const closeMenu = () => {
-    document.querySelector(".sidebar").classList.remove("open")
-  }
+    document.querySelector(".sidebar").classList.remove("open");
+  };
 
   return (
     <BrowserRouter>
       <div className="grid-container">
         <header className="header">
           <div className="brand">
-            <a onClick={openMenu}>
-              &#9776;
-             </a>
-            <Link to="/">BKU Food Court</Link>
+            <a onClick={openMenu}>&#9776;</a>
+            <Link to="/">Team Workboard</Link>
           </div>
           <div className="header-links">
-            <Link to='/cart'>
-              <img src='../images/cart.png' alt="Cart" width="34" height="30" />
-              {cartItems.reduce((a, c) => a += c.qty, null)}
-            </Link>
-            {
-              userInfo ? <Link to="/profile" >{userInfo.name}</Link> :
-                <Link to="/signin">Sign In</Link>
-            }
-            {userInfo && userInfo.isManager &&
+            {/* <Link to="/cart">
+              <img src="../images/cart.png" alt="Cart" width="34" height="30" />
+              {cartItems.reduce((a, c) => (a += c.qty), null)}
+            </Link> */}
+            {userInfo ? (
+              <Link to="/profile">{userInfo.name}</Link>
+            ) : (
+              <Link to="/signin">Sign In</Link>
+            )}
+            {/* {(userInfo && userInfo.isManager && (
               <Link to="/manager">Manager</Link>
-              || ''}
-            {userInfo && userInfo.isAdmin &&
+            )) ||
+              ""} */}
+            {(userInfo && userInfo.isAdmin && (
               <div className="dropdown">
-                <a href="#">Vendor Owner</a>
+                <a href="#">Task</a>
                 <ul className="dropdown-content">
                   <li>
-                    <Link to="/orders">Orders</Link>
-                    <Link to="/products">Products</Link>
+                    <Link to="/orders">Implementing</Link>
+                    <Link to="/products">Create</Link>
                   </li>
                 </ul>
               </div>
-              || ''
-            }
-            {userInfo && userInfo.isChef &&
-              <Link to="/chef">Chef</Link>
-              || ''}
-            {userInfo && userInfo.isITstaff &&
+            )) ||
+              ""}
+            {/* {(userInfo && userInfo.isChef && <Link to="/chef">Chef</Link>) ||
+              ""} */}
+            {/* {(userInfo && userInfo.isITstaff && (
               <Link to="/itstaff">IT Staff</Link>
-              || ''}
+            )) ||
+              ""} */}
           </div>
         </header>
         <aside className="sidebar">
           <h3 className="item">Vendors</h3>
-          <button className="sidebar-close-button" onClick={closeMenu}>X</button>
-          {loading ? (<div>...LOADING...</div>) :(<div>
-              {vendors.map(vendor =>
+          <button className="sidebar-close-button" onClick={closeMenu}>
+            X
+          </button>
+          {loading ? (
+            <div>...LOADING...</div>
+          ) : (
+            <div>
+              {vendors.map((vendor) => (
                 <div key={vendor._id}>
-                  <Link to={"/vendor/"+vendor.name} onClick={() => selectVendorHandler(vendor.name)} className="item item-btn">{vendor.name}</Link>
+                  <Link
+                    to={"/vendor/" + vendor.name}
+                    onClick={() => selectVendorHandler(vendor.name)}
+                    className="item item-btn"
+                  >
+                    {vendor.name}
+                  </Link>
                 </div>
-              )}
-            </div>)
-          }
+              ))}
+            </div>
+          )}
         </aside>
         <main className="main">
           <div className="content">
@@ -114,9 +123,7 @@ function App() {
             <Route path="/itstaff" component={ITstaffScreen} />
           </div>
         </main>
-        <footer className="footer">
-          S4T
-    </footer>
+        <footer className="footer">S4T</footer>
       </div>
     </BrowserRouter>
   );

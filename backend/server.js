@@ -74,11 +74,11 @@ app.post("/api/users/register", (req, res) => {
     req.body.name,
     req.body.email,
     req.body.password,
-    0,
-    0,
-    0,
-    0,
-    "",
+    1,
+    1,
+    1,
+    1,
+    "Project 1",
   ];
   sql = connection.format(sql, prepare);
   connection.query(sql, function (err, results) {
@@ -112,13 +112,13 @@ app.post("/api/products", (req, res) => {
     "INSERT INTO products(name,category,image,price,brand,rating,numReviews,countInStock, description, vendor) VALUES(?,?,?,?,?,?,?,?,?,?)";
   const prepare = [
     req.body.name,
-    req.body.category,
+    "req.body.category",
     req.body.image,
-    req.body.price,
+    "req.body.price",
     req.body.brand,
     0,
     0,
-    req.body.countInStock,
+    9999,
     req.body.description,
     req.body.vendor,
   ];
