@@ -1,0 +1,22 @@
+{
+  "name": "snpm-nc",
+  "version": "1.0.0",
+  "description": "Cong nghe phan mem nang cao",
+  "main": "1814315",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VanTien266/CNPM-NC.git"
+  },
+  "keywords": [
+    "1814315"
+  ],
+  "author": "Tien",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/VanTien266/CNPM-NC/issues"
+  },
+  "homepage": "https://github.com/VanTien266/CNPM-NC#readme"
+}
