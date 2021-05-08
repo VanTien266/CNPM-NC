@@ -1,8 +1,8 @@
-## Advanced Software Engineering - Semester 202
-#Project title: 
+# Advanced Software Engineering - Semester 202
+## Project title: 
 Team Workboard
-#Vision:
+## Vision:
 We would like to have tool that support people from different locations work as 1 team.
-#Technical stack:
+## Technical stack:
 HTML/CSS
 Javascript
