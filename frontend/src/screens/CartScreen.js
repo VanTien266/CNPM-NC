@@ -20,9 +20,11 @@ function CartScreen(props) {
   const requirement = "anhtai";
 
   const productId = props.match.params.id;
-  const qty = props.location.search
-    ? Number(props.location.search.split("=")[1])
-    : 1;
+  //   const qty = props.location.search
+  //     ? Number(props.location.search.split("=")[1])
+  //     : 1;
+  const qty = "";
+
   const dispatch = useDispatch();
   const removeFromCartHandler = (productId) => {
     dispatch(removeFromCart(productId));
@@ -32,6 +34,12 @@ function CartScreen(props) {
       dispatch(addToCart(productId, qty));
     }
   }, []);
+
+  useEffect(() => {
+    if (success) {
+      props.history.push("/profile/" + userInfo._id);
+    }
+  }, [success]);
 
   const checkoutHandler = () => {
     dispatch(
@@ -62,9 +70,7 @@ function CartScreen(props) {
                 </div>
                 <div className="cart-name">
                   <div>
-                    <Link to={"/products/" + item.product}>
-                      <h2>• {item.name}</h2>
-                    </Link>
+                    <h2> {item.name}</h2>
                   </div>
                   <div>
                     <div>
@@ -91,9 +97,6 @@ function CartScreen(props) {
         </div>
       </div>
       <div className="cart-action">
-        <h3>
-          Subtotal ( {cartItems.reduce((a, c) => (a += c.qty), 0)} tasks ){" "}
-        </h3>
         <button
           onClick={checkoutHandler}
           className="button primary full-width"

@@ -49,10 +49,14 @@ function App() {
             <Link to="/">Team Workboard</Link>
           </div>
           <div className="header-links">
-            {/* <Link to="/cart">
-              <img src="../images/cart.png" alt="Cart" width="34" height="30" />
-              {cartItems.reduce((a, c) => (a += c.qty), null)}
-            </Link> */}
+            <Link to="/cart">
+              <img
+                src="../images/clipboard.png"
+                alt="Cart"
+                width="34"
+                height="30"
+              />
+            </Link>
             {userInfo ? (
               <Link to="/profile">{userInfo.name}</Link>
             ) : (

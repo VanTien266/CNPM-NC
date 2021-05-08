@@ -31,6 +31,7 @@ function OrdersScreen(props) {
               <th>DATE</th>
               <th>USER ID</th>
               <th>STATUS</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -39,12 +40,13 @@ function OrdersScreen(props) {
                 <td>{order._id_order}</td>
                 <td>{order.date}</td>
                 <td>{order._id_user}</td>
+                <td>{order.isReceived ? "Done" : "Not done"}</td>
                 <td>
-                  {order.isDone
-                    ? order.isReceived
-                      ? "Done"
-                      : "Not done"
-                    : "Not done"}
+                  {order.isReceived ? (
+                    ""
+                  ) : (
+                    <button className="button">Delete</button>
+                  )}
                 </td>
               </tr>
             ))}
