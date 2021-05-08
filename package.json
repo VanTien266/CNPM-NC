@@ -1,22 +1,38 @@
 {
-  "name": "snpm-nc",
-  "version": "1.0.0",
-  "description": "Cong nghe phan mem nang cao",
-  "main": "1814315",
+  "name": "cnpm",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.6",
+    "@testing-library/user-event": "^12.8.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
   "scripts": {
-    "test": "test"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/VanTien266/CNPM-NC.git"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "keywords": [
-    "1814315"
-  ],
-  "author": "Tien",
-  "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/VanTien266/CNPM-NC/issues"
-  },
-  "homepage": "https://github.com/VanTien266/CNPM-NC#readme"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
